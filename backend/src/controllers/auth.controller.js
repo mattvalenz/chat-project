@@ -1,9 +1,13 @@
+import { generateToken } from "../lib/utils.js";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 
 export const signup = async (req, res) => {
-  const { fullname, email, password } = req.body;
+  const { fullName, email, password } = req.body;
   try {
+    if(!fullName || !email || !password) {
+        return res.status(400).json({message: "All fields are required"})
+    }
     if (password.length < 6) {
       return res
         .status(400)
@@ -23,13 +27,25 @@ export const signup = async (req, res) => {
       password: hashedPassword,
     });
 
-    if(newUser) {
-        
+    if (newUser) {
+      generateToken(newUser._id, res);
+      await newUser.save();
 
-    } else{
-        res.status(400).json({message: "Invalid user data"})
+      res
+        .status(201)
+        .json({
+          _id: newUser._id,
+          fullname: newUser.fullName,
+          email: newUser.email,
+          profilePic: newUser.profilePic,
+        });
+    } else {
+      res.status(400).json({ message: "Invalid user data" });
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log( "Error in signup controller", error.message)
+    res.status(500).json({message: "Internal Server Error" })
+  }
 };
 export const login = (req, res) => {
   res.send("login route");
