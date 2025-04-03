@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import { useChatStore } from "../../store/useChatStore";
 
 const Sidebar = () => {
-  return (
-    <div>Sidebar</div>
-  )
-}
+  const [getUsers, users, selectedUser, setSelectedUser, isUsersLoading] =
+    useChatStore();
 
-export default Sidebar
+  const onlineUsers = [];
+  
+  return <div></div>;
+};
+
+export default Sidebar;
