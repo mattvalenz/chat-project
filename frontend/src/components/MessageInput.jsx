@@ -6,7 +6,7 @@ const MessageInput = () => {
    const fileInputRef =useRef(null)
 
   return (
-    <div>MessageInput</div>
+    <div>MessageInput</div> /* todo functionality */
   )
 }
 
