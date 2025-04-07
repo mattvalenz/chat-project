@@ -11,7 +11,7 @@ const MessageInput = () => {
   const handleImageChange = (e) => {
 
     const file = e.target.files[0];
-    if (!file.type.startWith("image/")){
+    if (!file.type.startsWith("image/")){
       toast.error("Please select an image file")
       return
     }
@@ -35,14 +35,15 @@ const MessageInput = () => {
     try {
       await sendMessage({
         text: text.trim(),
-        image: imagePreview
-      })
-      setText("")
-      setImagePreview(null)
+        image: imagePreview,
+      });
+
+      // Clear form
+      setText("");
+      setImagePreview(null);
       if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (error) {
-      console.error("Failed to send message:", error)
-      
+      console.error("Failed to send message:", error);
     }
 
   }
