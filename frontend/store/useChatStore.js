@@ -61,7 +61,11 @@ export const useChatStore = create ((set,get) => ({
        })
     },
 
-    unsubscrib
+    unsubscribeFromMessages: () => {
+      const {selectedUser} = useAuthStore.getState().socket
+      socket.off("newMessage")
+
+    },
     
     setSelectedUser: (selectedUser)=> set({selectedUser})
 }))
