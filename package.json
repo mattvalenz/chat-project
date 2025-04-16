@@ -4,7 +4,7 @@
   "description": "",
   "main": "tailwind.config.js",
   "scripts": {
-    "build":"",
+    "build":"npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
     "start": ""
   },
   "keywords": [],
