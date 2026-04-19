@@ -1,5 +1,5 @@
 ## Chattup
-[Chattup]((https://chattup.onrender.com/login))
+[Chattup]([(https://chattup.onrender.com/login)])
 
 Chattup is a lightweight web-based chat application that allows users to register, log in, and communicate in real time through a simple and clean interface. The platform focuses on ease of use and quick access to messaging features.
 
